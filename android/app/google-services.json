@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "601863123234",
+    "project_id": "vorteix",
+    "storage_bucket": "vorteix.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:601863123234:android:a1faa973cf6d98dfc6757b",
+        "android_client_info": {
+          "package_name": "com.example.business_simulator"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqNy3GK0Mr-NqliubWUC_VQUtorB0reqU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
