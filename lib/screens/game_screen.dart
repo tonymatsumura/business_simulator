@@ -45,9 +45,48 @@ class _GameScreenState extends State<GameScreen> {
           appBar: AppBar(
             title: Text(
               'Vortex Solutions Simulator',
-              style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 14),
+              style: GoogleFonts.poppins(
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
+                color: Colors.white,
+              ),
             ),
             backgroundColor: Colors.blue[900],
+          ),
+          drawer: Drawer(
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: [
+                DrawerHeader(
+                  decoration: BoxDecoration(
+                    color: Colors.blue[900],
+                  ),
+                  child: Text(
+                    'Menu',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                    ),
+                  ),
+                ),
+                ListTile(
+                  leading: Icon(Icons.login),
+                  title: Text('Login'),
+                  onTap: () {
+                    // TODO: Implement navigation to Login screen
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.settings),
+                  title: Text('Config'),
+                  onTap: () {
+                    // TODO: Implement navigation to Config screen
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
           ),
           body: SingleChildScrollView(
             padding: EdgeInsets.all(16.0),
