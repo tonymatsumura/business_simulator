@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../providers/game_state.dart';
 import '../models/scenario.dart';
+import 'firebase_crud_screen.dart'; // Import the FirebaseCrudScreen
 
 class GameScreen extends StatefulWidget {
   @override
@@ -83,6 +84,19 @@ class _GameScreenState extends State<GameScreen> {
                   onTap: () {
                     // TODO: Implement navigation to Config screen
                     Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.settings),
+                  title: Text('Firebase CRUD'),
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const FirebaseCrudScreen(),
+                      ),
+                    );
                   },
                 ),
               ],
