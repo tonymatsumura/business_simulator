@@ -23,18 +23,24 @@ class GameState extends ChangeNotifier {
         .orderBy('round')
         .get();
     _scenarios = snapshot.docs
-        .map((doc) => Scenario.fromMap(doc.data()))
+        .map((doc) {
+          final scenario = Scenario.fromMap(doc.data());
+          scenario.options.shuffle(); // Shuffle options for each scenario
+          return scenario;
+        })
         .toList();
+    _scenarios.shuffle(); // Randomize the order of scenarios
     _loading = false;
     notifyListeners();
   }
 
   Scenario? getCurrentScenario() {
     if (_scenarios.isEmpty) return null;
-    return _scenarios.firstWhere(
-      (scenario) => scenario.round == _currentRound,
-      orElse: () => _scenarios[0],
-    );
+    // Use the current round as an index into the shuffled list
+    if (_currentRound - 1 < _scenarios.length && _currentRound > 0) {
+      return _scenarios[_currentRound - 1];
+    }
+    return null;
   }
 
   void makeChoice(GameOption option) {
@@ -48,11 +54,12 @@ class GameState extends ChangeNotifier {
     _currentRound = 1;
     _score = 0;
     _feedback = [];
+    _scenarios.shuffle(); // Shuffle scenarios for a new random order
     notifyListeners();
   }
 
   bool isGameOver() {
-    return _currentRound > (_scenarios.isEmpty ? 10 : _scenarios.length);
+    return _currentRound > 10;
   }
 
   String getFinalFeedback() {
