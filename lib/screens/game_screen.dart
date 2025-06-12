@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../providers/game_state.dart';
 import '../models/scenario.dart';
 import 'firebase_crud_screen.dart'; // Import the FirebaseCrudScreen
+import 'login_screen.dart';
 
 class GameScreen extends StatefulWidget {
   @override
@@ -73,9 +74,17 @@ class _GameScreenState extends State<GameScreen> {
                 ListTile(
                   leading: Icon(Icons.login),
                   title: Text('Login'),
-                  onTap: () {
-                    // TODO: Implement navigation to Login screen
+                  onTap: () async {
                     Navigator.pop(context);
+                    final userEmail = await Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const LoginScreen()),
+                    );
+                    if (userEmail != null) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Bem-vindo, $userEmail!')),
+                      );
+                    }
                   },
                 ),
                 ListTile(

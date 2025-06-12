@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'providers/game_state.dart';
 import 'screens/game_screen.dart';
+import 'screens/login_screen.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: GameScreen(),
+        home: LoginScreen(),
       ),
     );
   }
