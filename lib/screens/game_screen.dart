@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../providers/game_state.dart';
 import '../models/scenario.dart';
+import 'firebase_crud_screen.dart'; // Import the FirebaseCrudScreen
 
 class GameScreen extends StatefulWidget {
   @override
@@ -45,9 +46,61 @@ class _GameScreenState extends State<GameScreen> {
           appBar: AppBar(
             title: Text(
               'Vortex Solutions Simulator',
-              style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 14),
+              style: GoogleFonts.poppins(
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
+                color: Colors.white,
+              ),
             ),
             backgroundColor: Colors.blue[900],
+          ),
+          drawer: Drawer(
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: [
+                DrawerHeader(
+                  decoration: BoxDecoration(
+                    color: Colors.blue[900],
+                  ),
+                  child: Text(
+                    'Menu',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                    ),
+                  ),
+                ),
+                ListTile(
+                  leading: Icon(Icons.login),
+                  title: Text('Login'),
+                  onTap: () {
+                    // TODO: Implement navigation to Login screen
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.settings),
+                  title: Text('Config'),
+                  onTap: () {
+                    // TODO: Implement navigation to Config screen
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.settings),
+                  title: Text('Firebase CRUD'),
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const FirebaseCrudScreen(),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
           body: SingleChildScrollView(
             padding: EdgeInsets.all(16.0),
